@@ -29,7 +29,7 @@ public class HandleCSVFile extends RouteBuilder {
 				.unmarshal(buildCsvFormat())  // Body is now a List(Map("navn" -> ..., ...), ...)
 				.log("  Splitting the content of the file into atomic lines")
 				.split(body())
-				.log("  Transforming a CSV line into a Person")
+				.log("  Transforming a CSV line into a Command")
 				.process(csv2orderLine)
 				.log("  Transferring to the route that handle a given citizen")
 				.to(HANDLE_ORDER)   // Async transfer with JMS ( activemq:... )
