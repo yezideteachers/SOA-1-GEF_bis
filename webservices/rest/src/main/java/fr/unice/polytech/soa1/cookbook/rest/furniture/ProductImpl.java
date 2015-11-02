@@ -60,6 +60,22 @@ public class ProductImpl implements ProductService {
 		return Response.ok().entity(jo.toString()).build();
 	}
 
+	public Response getProductName(int id) {
+		if(RegisterProducts.read(id) == null) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		JSONObject jo = new JSONObject();
+		//jo.put("id", RegisterProducts.read(name).getId());
+		jo.put("description", RegisterProducts.read(id).getDescription());
+		/*jo.put("quantity", RegisterProducts.read(id).getQuantity());
+		jo.put("color", RegisterProducts.read(id).getColor());
+		jo.put("type", RegisterProducts.read(id).getType());
+		jo.put("wood", RegisterProducts.read(id).getWood());*/
+
+		return Response.ok().entity(jo.get("description")).build();
+	}
+
+
 	public Response filterBy(String name,String v) {
 		Collection<Product> products = RegisterProducts.getAvailableProducts();
 		ArrayList<Product> list = new ArrayList<Product>();

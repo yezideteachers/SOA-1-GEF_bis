@@ -6,11 +6,11 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 
 
-@WebService(serviceName = "TaxFormAccessService")
-public interface TaxFormAccessService {
+@WebService(serviceName = "BillAccessService")
+public interface BillAccessService {
 
 
-	@WebMethod(operationName = "retrieveTaxFormFromUID")
+	@WebMethod(operationName = "retrieveBillFromUID")
 	@WebResult(name="amount")
 	double getTaxForm(@WebParam(name="request") String request);
 

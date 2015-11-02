@@ -10,8 +10,8 @@ import java.util.Date;
 @WebService(targetNamespace   = "http://informatique.polytech.unice.fr/soa1/cookbook/",
 		    portName          = "ExternalTaxComputerPort",
 		    serviceName       = "ExternalTaxComputerService",
-		    endpointInterface = "fr.unice.polytech.soa1.cookbook.TaxComputationService")
-public class TaxComputationImpl implements TaxComputationService {
+		    endpointInterface = "fr.unice.polytech.soa1.cookbook.BillService")
+public class BillImpl implements BillService {
 
 	public TaxComputation simple(SimpleTaxRequest request) {
 		float amount = (float) (request.getIncome() * 22.0);

@@ -35,6 +35,10 @@ public interface ProductService {
 	@GET
 	@Path("/product/{id}")
 	public Response getProduct(@PathParam("id") int id);
+
+	@GET
+	@Path("/product/name/{id}")
+	public Response getProductName(@PathParam("id") int id);
 	
 	/*filtrer le produit par nom , prix ... en spécifiant le niveau de filter */
 	@GET

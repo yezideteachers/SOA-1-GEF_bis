@@ -33,8 +33,8 @@ http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/ja
   	</cxf:features>
     </cxf:bus>
     <jaxws:endpoint id="taxcomp"
-                    implementor="fr.unice.polytech.soa1.cookbook.TaxComputationImpl"
-                    address="/TaxComputation">
+                    implementor="fr.unice.polytech.soa1.cookbook.BillImpl"
+                    address="/BillComputation">
     </jaxws:endpoint>
 
 </blueprint>

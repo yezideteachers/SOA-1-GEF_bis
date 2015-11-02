@@ -14,15 +14,15 @@ public class Endpoints {
 
 //	public static final String CSV_OUTPUT_DIRECTORY_RES = "file:camel/output2";
 
-	public static final String HANDLE_CITIZEN = "activemq:handleACitizen";
+	public static final String HANDLE_ORDER = "activemq:handleAOrder";
 
 	public static final String GEN_SERVICE = "http://localhost:8181";
 
 	//public static final String GEN_SERV_RES = "spring-ws://http://localhost:8181/cxf/demo/generators/demogen";
 
-	public static final String STORE_TAX_FORM = "activemq:storeTaxForm";
+	//public static final String STORE_TAX_FORM = "activemq:storeTaxForm";
 
-	public static final String TAX_COMPUTATION_SERVICE = "spring-ws://http://localhost:8181/cxf/TaxComputation";
+	public static final String Bill_COMPUTATION_SERVICE = "spring-ws://http://localhost:8181/cxf/BillComputation";
 
 
 }

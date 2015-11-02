@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class TaxComputationTest extends TestCase {
 
-	private TaxComputationService service = null;
-	protected void setUp() { this.service = new TaxComputationImpl(); }
+	private BillService service = null;
+	protected void setUp() { this.service = new BillImpl(); }
 
 	@Test
 	public void test_simple_method() {

@@ -8,7 +8,7 @@ import javax.jws.WebService;
 import fr.unice.polytech.soa1.cookbook.data.*;
 
 @WebService(name="TaxComputation")
-public interface TaxComputationService {
+public interface BillService {
 
 
 	@WebResult(name="simple_result")

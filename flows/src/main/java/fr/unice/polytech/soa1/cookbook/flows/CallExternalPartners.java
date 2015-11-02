@@ -2,7 +2,7 @@ package fr.unice.polytech.soa1.cookbook.flows;
 
 
 import fr.unice.polytech.soa1.cookbook.flows.utils.RequestBuilder;
-import fr.unice.polytech.soa1.cookbook.flows.business.TaxForm;
+import fr.unice.polytech.soa1.cookbook.flows.business.BillForm;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -27,33 +27,19 @@ public class CallExternalPartners extends RouteBuilder {
 		from("direct:generator")
 				.setHeader(Exchange.HTTP_METHOD, constant("GET"))
 				.setBody(constant(""))
-				.to(GEN_SERVICE + "/cxf/demo/generators/mydemogen")
+				.to(GEN_SERVICE + "/cxf/demo/catalog/products")
 				.process(readResponseStream)
-				.process(uuidCleaner)
+				//.process(uuidCleaner)
 				;
-/*
-		from("direct:generator")
-				.setHeader(Exchange.HTTP_METHOD, constant("GET"))
-				.setBody(constant(""))
-				.to(CSV_OUTPUT_DIRECTORY_RES + "?fileName=${property}.txt")
-				/*.process(readResponseStream)
-				.process(uuidCleaner)*/
-//		;
+
+
 
 		// SOAP: Using the simple method
-		from("direct:simpleTaxMethod")
+		from("direct:commandMethod")
 				.log("    Computing ${body.name} with simple computation [ref: ${property.p_uuid}]")
 				.bean(RequestBuilder.class, "buildSimpleRequest(${body}, ${property.p_uuid})")
-				.to(TAX_COMPUTATION_SERVICE)
-				.process(result2taxForm)
-				;
-
-		// SOAP: Using the complex method
-		from("direct:complexTaxMethod")
-				.log("    Computing ${body.name} with advanced computation [uid: ${property.p_uuid}]")
-				.bean(RequestBuilder.class, "buildAdvancedRequest(${body}, ${property.p_uuid})")
-				.to(TAX_COMPUTATION_SERVICE)
-				.process(result2taxForm)
+				.to(Bill_COMPUTATION_SERVICE)
+				.process(result2bill)
 				;
 
 	}
@@ -84,14 +70,14 @@ public class CallExternalPartners extends RouteBuilder {
 		}
 	};
 
-	// Transform the response of the TaxComputation web service into a TaxForm Business Object (using XPath)
-	private static Processor result2taxForm = new Processor() {
+	// Transform the response of the TaxComputation web service into a BillForm Business Object (using XPath)
+	private static Processor result2bill = new Processor() {
 
 		private XPath xpath = XPathFactory.newInstance().newXPath();    // feature:install camel-saxon
 
 		public void process(Exchange exchange) throws Exception {
 			Source response = (Source) exchange.getIn().getBody();
-			TaxForm result = new TaxForm();
+			BillForm result = new BillForm();
 			result.setAmount(Double.parseDouble(xpath.evaluate("//amount/text()", response)));
 			result.setDate(xpath.evaluate("//date/text()", response));
 			exchange.getIn().setBody(result);

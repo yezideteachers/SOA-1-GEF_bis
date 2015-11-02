@@ -431,7 +431,7 @@ public interface TaxFormAccessService {
 Then, we simply create a CXF endpoint to expose this interface as a SOAP service. Considering that this method accepts a String as input, we can directly forward the contents of the body to the  `getTaxForm` flow. The only precaution is to filter based on the `operationName` header.
 
 ```java
-from("cxf:/TaxAccessService?serviceClass=fr.unice.polytech.soa1.cookbook.flows.soap.TaxFormAccessService")
+from("cxf:/TaxAccessService?serviceClass=fr.unice.polytech.soa1.cookbook.flows.soap.BillAccessService")
 		.filter(simple("${in.headers.operationName} == 'retrieveTaxFormFromUID'"))
 		.to("direct:getTaxForm")
 ;

@@ -62,6 +62,7 @@ public class ProductImpl implements ProductService {
 		return Response.ok().entity(jo.toString()).build();
 	}
 
+
 	public Response filterBy(String name,String v) {
 		Collection<Product> products = RegisterProducts.getAvailableProducts();
 		ArrayList<Product> list = new ArrayList<Product>();

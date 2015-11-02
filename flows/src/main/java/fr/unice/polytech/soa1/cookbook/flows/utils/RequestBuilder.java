@@ -23,7 +23,7 @@ public class RequestBuilder {
 		builder.append("</cook:command>");
 		return builder.toString();
 	}
-
+/*
 	public String buildAdvancedRequest(OrderLine o, String uuid) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("<cook:complex xmlns:cook=\"http://cookbook.soa1.polytech.unice.fr/\">\n");
@@ -32,8 +32,8 @@ public class RequestBuilder {
 		builder.append("    <income>" + o.getQuantity()  + "</income>\n");
 		/*builder.append("    <assets>" + p.getAssets()  + "</assets>\n");
 		builder.append("    <zone>"   + p.getZipCode() + "</zone>\n");*/
-		builder.append("  </complexTaxInfo>\n");
+	/*	builder.append("  </complexTaxInfo>\n");
 		builder.append("</cook:complex>");
 		return builder.toString();
-	}
+	}*/
 }

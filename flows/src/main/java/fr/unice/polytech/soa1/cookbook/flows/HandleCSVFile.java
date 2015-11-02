@@ -4,8 +4,6 @@ package fr.unice.polytech.soa1.cookbook.flows;
 import static fr.unice.polytech.soa1.cookbook.flows.utils.Endpoints.*;
 
 import fr.unice.polytech.soa1.cookbook.flows.business.OrderLine;
-import fr.unice.polytech.soa1.cookbook.flows.business.Person;
-import fr.unice.polytech.soa1.cookbook.flows.utils.LetterWriter;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -32,9 +30,9 @@ public class HandleCSVFile extends RouteBuilder {
 				.log("  Splitting the content of the file into atomic lines")
 				.split(body())
 				.log("  Transforming a CSV line into a Person")
-				.process(csv2person)
+				.process(csv2orderLine)
 				.log("  Transferring to the route that handle a given citizen")
-				.to(HANDLE_CITIZEN)   // Async transfer with JMS ( activemq:... )
+				.to(HANDLE_ORDER)   // Async transfer with JMS ( activemq:... )
 				;
 /*
 		from(CSV_INPUT_DIRECTORY)
@@ -67,7 +65,7 @@ public class HandleCSVFile extends RouteBuilder {
 
 
 	// Process a map<String -> Object> into a person
-	private static Processor csv2person = new Processor() {
+	private static Processor csv2orderLine = new Processor() {
 
 		public void process(Exchange exchange) throws Exception {
 			// retrieving the body of the exchanged message

@@ -73,7 +73,7 @@ In the `resources` directory, we rely on a file named `OSGI-INF/blueprint/bluepr
 
 ```xml
 <jaxws:endpoint id="taxcomp"
-                implementor="fr.unice.polytech.soa1.cookbook.TaxComputationImpl"
+                implementor="fr.unice.polytech.soa1.cookbook.BillImpl"
                 address="/TaxComputation">
 </jaxws:endpoint>
 ```

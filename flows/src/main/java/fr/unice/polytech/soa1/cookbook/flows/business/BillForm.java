@@ -3,7 +3,7 @@ package fr.unice.polytech.soa1.cookbook.flows.business;
 
 import java.io.Serializable;
 
-public class TaxForm implements Serializable {
+public class BillForm implements Serializable {
 
 	private double amount;
 	private String date;
@@ -26,7 +26,7 @@ public class TaxForm implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TaxForm {" +
+		return "BillForm {" +
 				"amount=" + amount +
 				", date='" + date + '\'' +
 				'}';
