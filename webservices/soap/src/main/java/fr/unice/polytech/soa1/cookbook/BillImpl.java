@@ -1,8 +1,9 @@
 package fr.unice.polytech.soa1.cookbook;
 
-import fr.unice.polytech.soa1.cookbook.data.*;
+import fr.unice.polytech.soa1.cookbook.data.AdvancedTaxRequest;
+import fr.unice.polytech.soa1.cookbook.data.SimpleTaxRequest;
+import fr.unice.polytech.soa1.cookbook.data.TaxComputation;
 
-import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.Date;
 
@@ -47,7 +48,9 @@ public class BillImpl implements BillService {
 		float coeff = (float) (!code.startsWith("1") ? 0.2 : 0.18 );
 		return i * coeff;
 	}
-
+	public float computeCost(int quant, float pay) {
+		return quant*pay;
+	}
 	public float computeAssets(float a, String code) {
 		float coeff = (float) (!code.startsWith("1") ? 0.12 : 0.1 );
 		return a * coeff;

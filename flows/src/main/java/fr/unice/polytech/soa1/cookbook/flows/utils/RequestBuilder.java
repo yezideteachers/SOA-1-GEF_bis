@@ -23,6 +23,7 @@ public class RequestBuilder {
 		builder.append("</cook:command>");
 		return builder.toString();
 	}
+
 /*
 	public String buildAdvancedRequest(OrderLine o, String uuid) {
 		StringBuilder builder = new StringBuilder();

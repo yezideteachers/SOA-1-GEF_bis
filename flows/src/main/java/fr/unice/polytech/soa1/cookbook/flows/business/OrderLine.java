@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by yazide on 28/10/2015.
  */
 public class OrderLine implements Serializable{
-
+    private int idClient;
     private String ref;
     private String name;
     private String color;
@@ -22,6 +22,15 @@ public class OrderLine implements Serializable{
     }
     public OrderLine(){}
 */
+
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
     public String getRef() {
         return ref;
     }

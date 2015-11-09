@@ -1,6 +1,6 @@
-package fr.unice.polytech.soa1.cookbook.restbis;
+package fr.unice.polytech.soa1.cookbook.rest.Shoes;
 
-public class ShoeProduct {
+public class Product {
 	
 	private static int cpt=0;
 	private String name;
@@ -9,7 +9,7 @@ public class ShoeProduct {
 	private double price;
 	private String id;
 	
-	public ShoeProduct(String n, int s, String c, double p) {
+	public Product(String n, int s, String c, double p) {
 		// 
 		this.name = n;
 		this.size = s;
@@ -29,7 +29,7 @@ public class ShoeProduct {
 		return this.id;
 	}
 	
-	public boolean equals(ShoeProduct p){
+	public boolean equals(Product p){
 		return(this.id.equals(p.id));
 	}
 	

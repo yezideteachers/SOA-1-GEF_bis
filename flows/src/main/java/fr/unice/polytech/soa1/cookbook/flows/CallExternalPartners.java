@@ -27,11 +27,31 @@ public class CallExternalPartners extends RouteBuilder {
 		from("direct:generator")
 				.setHeader(Exchange.HTTP_METHOD, constant("GET"))
 				.setBody(constant(""))
-				.to(GEN_SERVICE + "/cxf/demo/catalog/products")
+				.to(GEN_SERVICE + "/cxf/demo/catalog/product/1")
 				.process(readResponseStream)
-				//.process(uuidCleaner)
+						//.process(uuidCleaner)
+				.log("==========================")
+				.log(" name of product ${body}	")
+				.log("==========================")
+				.to("direct:generateLetter")
 				;
 
+		// Consuming a rest service with a Post
+		from("direct:generator2")
+				.setHeader(Exchange.HTTP_METHOD, constant("POST"))
+			//	.setBody(constant(""))
+				.log("############################################################################")
+				.log(" BEFORE : name of product ${body}	")
+				.log("############################################################################")
+				.setProperty("test",body())
+				.setBody(constant(""))
+				.to(GEN_SERVICE + "/cxf/demo/carts/cart/6")
+				.setBody(simple("${property.test}"))
+				.log("==========================")
+				.log(" name of product ${body}	")
+				.log("==========================")
+
+				;
 
 
 		// SOAP: Using the simple method
@@ -65,7 +85,12 @@ public class CallExternalPartners extends RouteBuilder {
 	private static Processor uuidCleaner = new Processor() {
 		public void process(Exchange exchange) throws Exception {
 			String data = (String) exchange.getIn().getBody();
-			String cleaned = data.substring(1,data.length()-1);
+			String cleaned ="";// data.substring(1,data.length()-1);
+			for (int i = 0; i < data.length(); i++) {
+				if(data.charAt(i)=='i'){cleaned+="\n";}
+				else{cleaned+=data.charAt(i);}
+
+			}
 			exchange.getIn().setBody(cleaned);
 		}
 	};

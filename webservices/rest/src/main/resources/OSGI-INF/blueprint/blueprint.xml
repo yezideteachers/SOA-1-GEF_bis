@@ -26,11 +26,13 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
     <jaxrs:server id="genService" address="/demo">
         <jaxrs:serviceBeans>
             <ref component-id="genSvc"/>
-            <ref component-id="mygenSvc"/>
+            <ref component-id="genProdSvc"/>
+            <ref component-id="genCartSvc"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
     <bean id="genSvc" class="fr.unice.polytech.soa1.cookbook.rest.GeneratorService"/>
-    <bean id="mygenSvc" class="fr.unice.polytech.soa1.cookbook.rest.furniture.ProductImpl"/>
+    <bean id="genProdSvc" class="fr.unice.polytech.soa1.cookbook.rest.furniture.Service.ProductImpl"/>
+    <bean id="genCartSvc" class="fr.unice.polytech.soa1.cookbook.rest.furniture.Service.CartImpl"/>
 
 </blueprint>

@@ -1,5 +1,6 @@
-package fr.unice.polytech.soa1.cookbook.rest.furniture;
+package fr.unice.polytech.soa1.cookbook.rest.furniture.Service;
 
+import fr.unice.polytech.soa1.cookbook.rest.furniture.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

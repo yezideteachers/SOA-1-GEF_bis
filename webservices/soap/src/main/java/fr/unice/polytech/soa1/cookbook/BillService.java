@@ -20,5 +20,7 @@ public interface BillService {
 	@WebResult(name="command_result")
 	TaxComputation command(@WebParam(name="commandInfo") SimpleTaxRequest request);
 
+/*	@WebResult(name="command_result")
+	TaxComputation commandFurniture(@WebParam(name="commandInfo") SimpleTaxRequest request);*/
 }
 

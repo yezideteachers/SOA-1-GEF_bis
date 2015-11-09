@@ -1,5 +1,9 @@
-package fr.unice.polytech.soa1.cookbook.rest.furniture;
+package fr.unice.polytech.soa1.cookbook.rest.furniture.Service;
 
+
+import fr.unice.polytech.soa1.cookbook.rest.furniture.COLOR;
+import fr.unice.polytech.soa1.cookbook.rest.furniture.TYPE;
+import fr.unice.polytech.soa1.cookbook.rest.furniture.WOOD;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

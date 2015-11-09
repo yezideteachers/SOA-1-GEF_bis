@@ -18,6 +18,8 @@ public class Endpoints {
 
 	public static final String GEN_SERVICE = "http://localhost:8181";
 
+	public static final String HANDLE_CATALOG = "activemq:handleACatalog";
+
 	//public static final String GEN_SERV_RES = "spring-ws://http://localhost:8181/cxf/demo/generators/demogen";
 
 	//public static final String STORE_TAX_FORM = "activemq:storeTaxForm";

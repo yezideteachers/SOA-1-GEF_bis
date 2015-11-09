@@ -24,12 +24,12 @@ public class HandleCSVFile extends RouteBuilder {
 	public void configure() throws Exception {
 
 		from(CSV_INPUT_DIRECTORY)
-				.log("Processing ${file:name}")
+				.log("Processing 47 ${file:name}")
 				.log("  Loading the file as a CSV document")
 				.unmarshal(buildCsvFormat())  // Body is now a List(Map("navn" -> ..., ...), ...)
 				.log("  Splitting the content of the file into atomic lines")
 				.split(body())
-				.log("  Transforming a CSV line into a Command")
+				.log("  Transforming a CSV line into a Order")
 				.process(csv2orderLine)
 				.log("  Transferring to the route that handle a given citizen")
 				.to(HANDLE_ORDER)   // Async transfer with JMS ( activemq:... )
@@ -81,6 +81,7 @@ public class HandleCSVFile extends RouteBuilder {
 
 
 			OrderLine o = new OrderLine();
+			o.setIdClient(Integer.parseInt((String) data.get("idClient")));
 			o.setRef( (String) data.get("refprod"));
 			//name
 			o.setName((String) data.get("nameprod"));
